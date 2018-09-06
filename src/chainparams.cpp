@@ -121,10 +121,10 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xae;
-        pchMessageStart[1] = 0x2e;
-        pchMessageStart[2] = 0x2c;
-        pchMessageStart[3] = 0xcb;
+        pchMessageStart[0] = 0xB8;
+        pchMessageStart[1] = 0x67;
+        pchMessageStart[2] = 0x1B;
+        pchMessageStart[3] = 0x81;
         nDefaultPort = 9543;
         nPruneAfterHeight = 100000;
         vAlertPubKey = ParseHex("04be90e188a1c5d08587b5527f59944d8f8cbc61e2671548e01e4672867a4dcd9f9903e7fbc0bf0a08a959155beafb8ed20422582d3ad5fc6f2405544d64b0a9a5");
@@ -207,10 +207,10 @@ public:
         // No premine in testnet
         consensus.premineBlocks = 0;
 
-        pchMessageStart[0] = 0x91;
-        pchMessageStart[1] = 0xdf;
-        pchMessageStart[2] = 0x4d;
-        pchMessageStart[3] = 0x18;
+        pchMessageStart[0] = 0x44;
+        pchMessageStart[1] = 0x3E;
+        pchMessageStart[2] = 0xB8;
+        pchMessageStart[3] = 0xE3;
 
         // Hardfork params
         nSwitchKGWblock = 0;
@@ -247,11 +247,7 @@ public:
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
 
-        checkpointData = (CCheckpointData){
-            {
-                { 0, uint256S("0x4df73b297d37d41e66f50780a1ce671c6cafb319fb6676aa5b2af0ea09fd1d0b") },
-            }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
             1524130420,
@@ -304,11 +300,11 @@ public:
         nSwitchDIGIblock = 0;
         nSwitchLyra2REv2_DGW = 0;
 
-        pchMessageStart[0] = 0xz1;
-        pchMessageStart[1] = 0xx2;
-        pchMessageStart[2] = 0xz4;
-        pchMessageStart[3] = 0xxa;
-        nDefaultPort = 20555;
+        pchMessageStart[0] = 0xB9;
+        pchMessageStart[1] = 0xCC;
+        pchMessageStart[2] = 0xC3;
+        pchMessageStart[3] = 0x2A;
+        nDefaultPort = 9543;
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1296688602, 3, 0x207fffff, 1, 50 * COIN);
@@ -324,11 +320,7 @@ public:
         fRequireStandard = false;
         fMineBlocksOnDemand = true;
 
-        checkpointData = (CCheckpointData){
-            {
-                { 0, uint256S("0x719548bfb318084da500e0e4b6fea5d00a79300f2e33ed54a10bc4f477e91710") },
-            }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
             1296688602,
