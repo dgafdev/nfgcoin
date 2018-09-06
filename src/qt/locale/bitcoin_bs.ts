@@ -14,8 +14,8 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     </context>
 <context>
@@ -156,8 +156,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin Jezrga</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin Jezrga</translation>
     </message>
     </context>
 </TS>

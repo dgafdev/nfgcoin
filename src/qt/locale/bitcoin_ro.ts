@@ -142,8 +142,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a Hanacoin address</source>
-        <translation>Trimite monedele către o adresă Hanacoin</translation>
+        <source>Send coins to a NFGcoin address</source>
+        <translation>Trimite monedele către o adresă NFGcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your Hanacoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de Hanacoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your NFGcoin addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de NFGcoin pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Hanacoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Hanacoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified NFGcoin addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de NFGcoin specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -214,12 +214,12 @@
         <translation>&amp;Ajutor</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and hanacoin: URIs)</source>
-        <translation>Cerere plată (generează coduri QR și hanacoin: URIs)</translation>
+        <source>Request payments (generates QR codes and nfgcoin: URIs)</source>
+        <translation>Cerere plată (generează coduri QR și nfgcoin: URIs)</translation>
     </message>
     <message>
-        <source>Open a hanacoin: URI or payment request</source>
-        <translation>Deschide un hanacoin: URI sau cerere de plată</translation>
+        <source>Open a nfgcoin: URI or payment request</source>
+        <translation>Deschide un nfgcoin: URI sau cerere de plată</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -748,8 +748,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin Core</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

@@ -154,8 +154,8 @@
         <translation>Newid y cyfrinymadrodd a ddefnyddiwyd ar gyfer amgryptio'r waled</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -640,8 +640,8 @@
         <translation>Opsiynau:</translation>
     </message>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Craidd Hanacoin</translation>
+        <source>NFGcoin Core</source>
+        <translation>Craidd NFGcoin</translation>
     </message>
     <message>
         <source>Information</source>

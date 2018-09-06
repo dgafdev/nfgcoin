@@ -80,7 +80,7 @@ public:
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 1.1 * 24 * 60 * 60; // 1.1 days
+        consensus.nPowTargetTimespan = 10.5 * 60; // 1.1 days
         consensus.nPowTargetSpacing = 1.5 * 60; // 1.5 minutes
         consensus.nPowTargetTimespanDigisheld = 1.5 * 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -102,14 +102,14 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1520467200; // March 8, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000000003b5fe46b5222");
+        consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000000000000100010001");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0xd1c1bdae051d11b7c3bb1e26bbc473eeecc6dcc2464005f2c9838cda47ebfb9d"); // 302536
 
-        // Hard premine (no difficulty retargeting) 445,000 blocks * 50 = 22,250,000 HanaCoins
-        // Soft premine (normal difficulty retargeting) 5,000 blocks * 50 = 250,000 HanaCoins
-        consensus.premineBlocks = 445000;
+        // Hard premine (no difficulty retargeting) 445,000 blocks * 50 = 22,250,000 NFGCoins
+        // Soft premine (normal difficulty retargeting) 5,000 blocks * 50 = 250,000 NFGCoins
+        consensus.premineBlocks = 400000;
 
         // Hardfork params
         nSwitchKGWblock = 0;
@@ -125,20 +125,20 @@ public:
         pchMessageStart[1] = 0x2e;
         pchMessageStart[2] = 0x2c;
         pchMessageStart[3] = 0xcb;
-        nDefaultPort = 9501;
+        nDefaultPort = 9543;
         nPruneAfterHeight = 100000;
         vAlertPubKey = ParseHex("04be90e188a1c5d08587b5527f59944d8f8cbc61e2671548e01e4672867a4dcd9f9903e7fbc0bf0a08a959155beafb8ed20422582d3ad5fc6f2405544d64b0a9a5");
 
-        genesis = CreateGenesisBlock(1525878567, 263152, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1525878567, 263152, 0x1e0ffff0, 1, 5000 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
         assert(consensus.hashGenesisBlock == uint256S("0xc699ca19d51c98fd39a188570afc6e73237682a57407ea6c7f2d22bdb6ae35e6"));
         assert(genesis.hashMerkleRoot == uint256S("0x6cecc2669293484fcb9ac76d1e937b7aee80e49046b67e43bc1d8e403b0498da"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        // vSeeds.emplace_back("dnsseed.hanacoin.com", false);
+        // vSeeds.emplace_back("dnsseed.nfgcoin.com", false);
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 40);  // H
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 112);  // n
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,55);  // P
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,176);
@@ -153,20 +153,7 @@ public:
         fRequireStandard = true;
         fMineBlocksOnDemand = false;
 
-        checkpointData = (CCheckpointData){
-            {
-                { 200,       uint256S("0x1e563e3a2f9035fca366f7cf516fe84ef4405cd2a58af105ffdad4d21c7cbc57") },
-                { 50200,     uint256S("0x8985d401fa7933b07eca99e4ce6e715b4bf11877a31f3e047195eccae6fb2be9") },
-                { 100400,    uint256S("0x00e0cb4ade846061c35b5807673a925c1364ce6df4f86c139607750c1c9e1c73") },
-                { 150600,    uint256S("0xb0810896e6854b4fb179d6214bef94e1ae2f812547ba85b836f44e9b41044556") },
-                { 200800,    uint256S("0x2b9dc94a773198398efb0be8fa936c05fb092821d654360b72ff4e877748f8de") },
-                { 251000,    uint256S("0x25444bddd38dfa9ed93269db466f9924a0d67ece4d49f2f7a4443433d8ba44e4") },
-                { 301200,    uint256S("0xcc98b693f16d1657b3c7b0fb5c49ec1e916a767e73d943ba031b0f45a3845179") },
-                { 351400,    uint256S("0x9ee755c14fc1b6aa33640d882c94318cbd0f7629ff87ed76efb1d95218699c4c") },
-                { 401600,    uint256S("0x9a4bbebf9166bc3297b0ca02efdafb52278b66267904a3582ea41219c2edb2d0") },
-                { 446000,    uint256S("0x69a26d3d13a852542091f514dbd4808ca57f5f2e785a5d19347854d760b57d41") },
-            }
-        };
+        checkpointData = {};
 
         chainTxData = ChainTxData{
             // Data as of block b8f1e3efdbaec9b2adf722a9ad3667c7368e222e044123bfc00dc2054e373bea (height 447457).
@@ -185,13 +172,13 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 1225000;
+        consensus.nSubsidyHalvingInterval = 99225000;
         consensus.BIP34Height = 1;
         consensus.BIP34Hash = uint256S("4df73b297d37d41e66f50780a1ce671c6cafb319fb6676aa5b2af0ea09fd1d0b");
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 1.1 * 24 * 60 * 60; // 1.1 days
+        consensus.nPowTargetTimespan = 10.5 * 60; // 1.1 days
         consensus.nPowTargetSpacing = 1.5 * 60; // 1.5 minutes
         consensus.nPowTargetTimespanDigisheld = 1.5 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -230,7 +217,7 @@ public:
         nSwitchDIGIblock = 0;
         nSwitchLyra2REv2_DGW = 0;
 
-        nDefaultPort = 19503;
+        nDefaultPort = 19543;
         nPruneAfterHeight = 1000;
         vAlertPubKey = ParseHex("04f7f9a86f2895aa62954522365839fdafa53d26bc4466a2b01442b45d0e12c08c87227221a15ff7118450f2ac68a04f31cdc19286d41bbbe28daa1c1b29f0a1f7");
 
@@ -243,9 +230,9 @@ public:
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        // vSeeds.emplace_back("testnet-dnsseed.hanacoin.com", false);
+        // vSeeds.emplace_back("testnet-dnsseed.nfgcoin.com", false);
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,112);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,117);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
@@ -286,7 +273,7 @@ public:
         consensus.BIP65Height = 33000; // BIP65 activated on regtest (Used in rpc activation tests)
         consensus.BIP66Height = 33000; // BIP66 activated on regtest (Used in rpc activation tests)
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 1.1 * 24 * 60 * 60; // 1.5 days
+        consensus.nPowTargetTimespan = 10.5 * 60; // 1.5 days
         consensus.nPowTargetSpacing = 1.5 * 60; // 1.5 minutes
         consensus.nPowTargetTimespanDigisheld = 1.5 * 60;
         consensus.fPowAllowMinDifficultyBlocks = true;
@@ -317,10 +304,10 @@ public:
         nSwitchDIGIblock = 0;
         nSwitchLyra2REv2_DGW = 0;
 
-        pchMessageStart[0] = 0xf1;
-        pchMessageStart[1] = 0xc2;
-        pchMessageStart[2] = 0x54;
-        pchMessageStart[3] = 0xba;
+        pchMessageStart[0] = 0xz1;
+        pchMessageStart[1] = 0xx2;
+        pchMessageStart[2] = 0xz4;
+        pchMessageStart[3] = 0xxa;
         nDefaultPort = 20555;
         nPruneAfterHeight = 1000;
 
@@ -348,7 +335,7 @@ public:
             0,
             0};
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,112);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,117);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);

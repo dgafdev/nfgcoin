@@ -70,7 +70,7 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
+        <source>NFGcoin</source>
         <translation>Биткоин</translation>
     </message>
     <message>

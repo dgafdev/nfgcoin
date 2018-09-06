@@ -12,9 +12,9 @@ For example:
 
     make HOST=x86_64-w64-mingw32 -j4
 
-A prefix will be generated that's suitable for plugging into Hanacoin's
+A prefix will be generated that's suitable for plugging into NFGcoin's
 configure. In the above example, a dir named x86_64-w64-mingw32 will be
-created. To use it for Hanacoin:
+created. To use it for NFGcoin:
 
     ./configure --prefix=`pwd`/depends/x86_64-w64-mingw32
 
@@ -43,7 +43,7 @@ The following can be set when running make: make FOO=bar
     BUILD_ID_SALT: Optional salt to use when generating build package ids
 
 If some packages are not built, for example `make NO_WALLET=1`, the appropriate
-options will be passed to hanacoin's configure. In this case, `--disable-wallet`.
+options will be passed to nfgcoin's configure. In this case, `--disable-wallet`.
 
 Additional targets:
 

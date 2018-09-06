@@ -5,7 +5,7 @@ Before every release candidate:
 
 * Update translations (ping wumpus on IRC) see [translation_process.md](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/hanacoinproject/hanacoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/dgafdev/nfgcoin/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -33,12 +33,12 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 Check out the source code in the following directory hierarchy.
 
     cd /path/to/your/toplevel/build
-    git clone https://github.com/hanacoinproject/gitian.sigs.ltc.git
-    git clone https://github.com/hanacoinproject/hanacoin-detached-sigs.git
+    git clone https://github.com/dgafdev/gitian.sigs.ltc.git
+    git clone https://github.com/dgafdev/nfgcoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/hanacoinproject/hanacoin.git
+    git clone https://github.com/dgafdev/nfgcoin.git
 
-### Hanacoin maintainers/release engineers, suggestion for writing release notes
+### NFGcoin maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
@@ -61,7 +61,7 @@ If you're using the automated script (found in [contrib/gitian-build.sh](/contri
 
 Setup Gitian descriptors:
 
-    pushd ./hanacoin
+    pushd ./nfgcoin
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
     export VERSION=(new version, e.g. 0.8.0)
     git fetch
@@ -95,7 +95,7 @@ Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, a
 By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
-    make -C ../hanacoin/depends download SOURCES_PATH=`pwd`/cache/common
+    make -C ../nfgcoin/depends download SOURCES_PATH=`pwd`/cache/common
     popd
 
 Only missing files will be fetched, so this is safe to re-run for each build.
@@ -103,50 +103,50 @@ Only missing files will be fetched, so this is safe to re-run for each build.
 NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from local URLs. For example:
 
     pushd ./gitian-builder
-    ./bin/gbuild --url hanacoin=/path/to/hanacoin,signature=/path/to/sigs {rest of arguments}
+    ./bin/gbuild --url nfgcoin=/path/to/nfgcoin,signature=/path/to/sigs {rest of arguments}
     popd
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign Hanacoin Core for Linux, Windows, and OS X:
+### Build and sign NFGcoin Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --num-make 2 --memory 3000 --commit hanacoin=v${VERSION} ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/hanacoin-*.tar.gz build/out/src/hanacoin-*.tar.gz ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit nfgcoin=v${VERSION} ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/nfgcoin-*.tar.gz build/out/src/nfgcoin-*.tar.gz ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit hanacoin=v${VERSION} ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
-    mv build/out/hanacoin-*-win-unsigned.tar.gz inputs/hanacoin-win-unsigned.tar.gz
-    mv build/out/hanacoin-*.zip build/out/hanacoin-*.exe ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit nfgcoin=v${VERSION} ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
+    mv build/out/nfgcoin-*-win-unsigned.tar.gz inputs/nfgcoin-win-unsigned.tar.gz
+    mv build/out/nfgcoin-*.zip build/out/nfgcoin-*.exe ../
 
-    ./bin/gbuild --num-make 2 --memory 3000 --commit hanacoin=v${VERSION} ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
-    mv build/out/hanacoin-*-osx-unsigned.tar.gz inputs/hanacoin-osx-unsigned.tar.gz
-    mv build/out/hanacoin-*.tar.gz build/out/hanacoin-*.dmg ../
+    ./bin/gbuild --num-make 2 --memory 3000 --commit nfgcoin=v${VERSION} ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
+    mv build/out/nfgcoin-*-osx-unsigned.tar.gz inputs/nfgcoin-osx-unsigned.tar.gz
+    mv build/out/nfgcoin-*.tar.gz build/out/nfgcoin-*.dmg ../
     popd
 
 Build output expected:
 
-  1. source tarball (`hanacoin-${VERSION}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`hanacoin-${VERSION}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`hanacoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `hanacoin-${VERSION}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`hanacoin-${VERSION}-osx-unsigned.dmg`, `hanacoin-${VERSION}-osx64.tar.gz`)
+  1. source tarball (`nfgcoin-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`nfgcoin-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`nfgcoin-${VERSION}-win[32|64]-setup-unsigned.exe`, `nfgcoin-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`nfgcoin-${VERSION}-osx-unsigned.dmg`, `nfgcoin-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs.ltc/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
 Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 
-    gpg --import hanacoin/contrib/gitian-keys/*.pgp
+    gpg --import nfgcoin/contrib/gitian-keys/*.pgp
     gpg --refresh-keys
 
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
     popd
 
 ### Next steps:
@@ -167,22 +167,22 @@ Codesigner only: Create Windows/OS X detached signatures:
 
 Codesigner only: Sign the osx binary:
 
-    transfer hanacoin-osx-unsigned.tar.gz to osx for signing
-    tar xf hanacoin-osx-unsigned.tar.gz
+    transfer nfgcoin-osx-unsigned.tar.gz to osx for signing
+    tar xf nfgcoin-osx-unsigned.tar.gz
     ./detached-sig-create.sh -s "Key ID"
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf hanacoin-win-unsigned.tar.gz
+    tar xf nfgcoin-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/hanacoin-detached-sigs
+    cd ~/nfgcoin-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -195,25 +195,25 @@ Codesigner only: Commit the detached codesign payloads:
 Non-codesigners: wait for Windows/OS X detached signatures:
 
 - Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [hanacoin-detached-sigs](https://github.com/hanacoinproject/hanacoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Detached signatures will then be committed to the [nfgcoin-detached-sigs](https://github.com/dgafdev/nfgcoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/hanacoin-osx-signed.dmg ../hanacoin-${VERSION}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/nfgcoin-osx-signed.dmg ../nfgcoin-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSION} ../hanacoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../hanacoin/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/hanacoin-*win64-setup.exe ../hanacoin-${VERSION}-win64-setup.exe
-    mv build/out/hanacoin-*win32-setup.exe ../hanacoin-${VERSION}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../nfgcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-signed ../nfgcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/nfgcoin-*win64-setup.exe ../nfgcoin-${VERSION}-win64-setup.exe
+    mv build/out/nfgcoin-*win32-setup.exe ../nfgcoin-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
@@ -235,23 +235,23 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-hanacoin-${VERSION}-aarch64-linux-gnu.tar.gz
-hanacoin-${VERSION}-arm-linux-gnueabihf.tar.gz
-hanacoin-${VERSION}-i686-pc-linux-gnu.tar.gz
-hanacoin-${VERSION}-x86_64-linux-gnu.tar.gz
-hanacoin-${VERSION}-osx64.tar.gz
-hanacoin-${VERSION}-osx.dmg
-hanacoin-${VERSION}.tar.gz
-hanacoin-${VERSION}-win32-setup.exe
-hanacoin-${VERSION}-win32.zip
-hanacoin-${VERSION}-win64-setup.exe
-hanacoin-${VERSION}-win64.zip
+nfgcoin-${VERSION}-aarch64-linux-gnu.tar.gz
+nfgcoin-${VERSION}-arm-linux-gnueabihf.tar.gz
+nfgcoin-${VERSION}-i686-pc-linux-gnu.tar.gz
+nfgcoin-${VERSION}-x86_64-linux-gnu.tar.gz
+nfgcoin-${VERSION}-osx64.tar.gz
+nfgcoin-${VERSION}-osx.dmg
+nfgcoin-${VERSION}.tar.gz
+nfgcoin-${VERSION}-win32-setup.exe
+nfgcoin-${VERSION}-win32.zip
+nfgcoin-${VERSION}-win64-setup.exe
+nfgcoin-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to the hanacoin.com server, nor put them in the torrent*.
+space *do not upload these to the nfgcoin.com server, nor put them in the torrent*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -261,24 +261,24 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the hanacoin.com server.
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the nfgcoin.com server.
 
 ```
 
-- Update hanacoin.com version
+- Update nfgcoin.com version
 
 - Announce the release:
 
-  - hanacoin-dev and hanacoin-dev mailing list
+  - nfgcoin-dev and nfgcoin-dev mailing list
 
-  - blog.hanacoin.com blog post
+  - blog.nfgcoin.com blog post
 
-  - Update title of #hanacoin and #hanacoin-dev on Freenode IRC
+  - Update title of #nfgcoin and #nfgcoin-dev on Freenode IRC
 
-  - Optionally twitter, reddit /r/Hanacoin, ... but this will usually sort out itself
+  - Optionally twitter, reddit /r/NFGcoin, ... but this will usually sort out itself
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/hanacoinproject/hanacoin/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/dgafdev/nfgcoin/releases/new) with a link to the archived release notes.
 
   - Celebrate

@@ -539,8 +539,8 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/hanacoinproject/hanacoin>";
-    const std::string URL_WEBSITE = "<https://hanacoin.com>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/dgafdev/nfgcoin>";
+    const std::string URL_WEBSITE = "<https://nfgcoin.com>";
 
     return CopyrightHolders(strprintf(_("Copyright (C) %i-%i"), 2013, COPYRIGHT_YEAR) + " ") + "\n" +
            "\n" +
@@ -838,7 +838,7 @@ void InitLogging()
     fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Hanacoin version %s\n", FormatFullVersion());
+    LogPrintf("NFGcoin version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only

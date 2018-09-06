@@ -87,8 +87,8 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-const char * const BITCOIN_CONF_FILENAME = "hanacoin.conf";
-const char * const BITCOIN_PID_FILENAME = "hanacoin.pid";
+const char * const BITCOIN_CONF_FILENAME = "nfgcoin.conf";
+const char * const BITCOIN_PID_FILENAME = "nfgcoin.pid";
 
 ArgsManager gArgs;
 bool fPrintToConsole = false;
@@ -506,7 +506,7 @@ static std::string FormatException(const std::exception* pex, const char* pszThr
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(nullptr, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "hanacoin";
+    const char* pszModule = "nfgcoin";
 #endif
     if (pex)
         return strprintf(
@@ -531,7 +531,7 @@ fs::path GetDefaultDataDir()
     // Unix: ~/.bitcoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Hanacoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "NFGcoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -541,10 +541,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/Hanacoin";
+    return pathRet / "Library/Application Support/NFGcoin";
 #else
     // Unix
-    return pathRet / ".hanacoin";
+    return pathRet / ".nfgcoin";
 #endif
 #endif
 }

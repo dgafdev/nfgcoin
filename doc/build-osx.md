@@ -28,17 +28,17 @@ If you want to build with ZeroMQ support
 
 NOTE: Building with Qt4 is still supported, however, could result in a broken UI. Building with Qt5 is recommended.
 
-Build Hanacoin Core
+Build NFGcoin Core
 ------------------------
 
-1. Clone the hanacoin source code and cd into `hanacoin`
+1. Clone the nfgcoin source code and cd into `nfgcoin`
 
-        git clone https://github.com/hanacoinproject/hanacoin
-        cd hanacoin
+        git clone https://github.com/dgafdev/nfgcoin
+        cd nfgcoin
 
-2.  Build hanacoin-core:
+2.  Build nfgcoin-core:
 
-    Configure and build the headless hanacoin binaries as well as the GUI (if Qt is found).
+    Configure and build the headless nfgcoin binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -57,37 +57,37 @@ Build Hanacoin Core
 Running
 -------
 
-Hanacoin Core is now available at `./src/hanacoind`
+NFGcoin Core is now available at `./src/nfgcoind`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=hanacoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Hanacoin/hanacoin.conf"
+    echo -e "rpcuser=nfgcoinrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/NFGcoin/nfgcoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/Hanacoin/hanacoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/NFGcoin/nfgcoin.conf"
 
-The first time you run hanacoind, it will start downloading the blockchain. This process could take several hours.
+The first time you run nfgcoind, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/Hanacoin/debug.log
+    tail -f $HOME/Library/Application\ Support/NFGcoin/debug.log
 
 Other commands:
 -------
 
-    ./src/hanacoind -daemon # Starts the hanacoin daemon.
-    ./src/hanacoin-cli --help # Outputs a list of command-line options.
-    ./src/hanacoin-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/nfgcoind -daemon # Starts the nfgcoin daemon.
+    ./src/nfgcoin-cli --help # Outputs a list of command-line options.
+    ./src/nfgcoin-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------
-You can use Qt Creator as an IDE, for hanacoin development.
+You can use Qt Creator as an IDE, for nfgcoin development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.
 
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "hanacoin-qt" as project name, enter src/qt as location
+4. Enter "nfgcoin-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."

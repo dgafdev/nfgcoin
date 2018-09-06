@@ -114,8 +114,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a Hanacoin address</source>
-        <translation>Enviar monedas a una dirección Hanacoin</translation>
+        <source>Send coins to a NFGcoin address</source>
+        <translation>Enviar monedas a una dirección NFGcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -130,8 +130,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -158,12 +158,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your Hanacoin addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones Hanacoin para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your NFGcoin addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones NFGcoin para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Hanacoin addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Hanacoin especificas</translation>
+        <source>Verify messages to ensure they were signed with specified NFGcoin addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones NFGcoin especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -608,8 +608,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin Core</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

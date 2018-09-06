@@ -17,7 +17,7 @@ osx=true
 SIGNER=
 VERSION=
 commit=false
-url=https://github.com/hanacoinproject/hanacoin
+url=https://github.com/dgafdev/nfgcoin
 proc=2
 mem=2000
 lxc=true
@@ -31,7 +31,7 @@ commitFiles=true
 read -d '' usage <<- EOF
 Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
-Run this script from the directory containing the hanacoin, gitian-builder, gitian.sigs.ltc, and hanacoin-detached-sigs.
+Run this script from the directory containing the nfgcoin, gitian-builder, gitian.sigs.ltc, and nfgcoin-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
@@ -39,7 +39,7 @@ version		Version number, commit, or branch to build. If building a commit or bra
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
--u|--url	Specify the URL of the repository. Default is https://github.com/hanacoinproject/hanacoin
+-u|--url	Specify the URL of the repository. Default is https://github.com/dgafdev/nfgcoin
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
 -s|--sign	Make signed binaries for Windows and Mac OSX
@@ -232,8 +232,8 @@ echo ${COMMIT}
 if [[ $setup = true ]]
 then
     sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm qemu-utils
-    git clone https://github.com/hanacoinproject/gitian.sigs.ltc.git
-    git clone https://github.com/hanacoinproject/hanacoin-detached-sigs.git
+    git clone https://github.com/dgafdev/gitian.sigs.ltc.git
+    git clone https://github.com/dgafdev/nfgcoin-detached-sigs.git
     git clone https://github.com/devrandom/gitian-builder.git
     pushd ./gitian-builder
     if [[ -n "$USE_LXC" ]]
@@ -247,7 +247,7 @@ then
 fi
 
 # Set up build
-pushd ./hanacoin
+pushd ./nfgcoin
 git fetch
 git checkout ${COMMIT}
 popd
@@ -256,7 +256,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./hanacoin-binaries/${VERSION}
+	mkdir -p ./nfgcoin-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -266,7 +266,7 @@ then
 	mkdir -p inputs
 	wget -N -P inputs $osslPatchUrl
 	wget -N -P inputs $osslTarUrl
-	make -C ../hanacoin/depends download SOURCES_PATH=`pwd`/cache/common
+	make -C ../nfgcoin/depends download SOURCES_PATH=`pwd`/cache/common
 
 	# Linux
 	if [[ $linux = true ]]
@@ -274,9 +274,9 @@ then
             echo ""
 	    echo "Compiling ${VERSION} Linux"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit hanacoin=${COMMIT} --url hanacoin=${url} ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/hanacoin-*.tar.gz build/out/src/hanacoin-*.tar.gz ../hanacoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit nfgcoin=${COMMIT} --url nfgcoin=${url} ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/nfgcoin-*.tar.gz build/out/src/nfgcoin-*.tar.gz ../nfgcoin-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
@@ -284,10 +284,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit hanacoin=${COMMIT} --url hanacoin=${url} ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
-	    mv build/out/hanacoin-*-win-unsigned.tar.gz inputs/hanacoin-win-unsigned.tar.gz
-	    mv build/out/hanacoin-*.zip build/out/hanacoin-*.exe ../hanacoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit nfgcoin=${COMMIT} --url nfgcoin=${url} ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
+	    mv build/out/nfgcoin-*-win-unsigned.tar.gz inputs/nfgcoin-win-unsigned.tar.gz
+	    mv build/out/nfgcoin-*.zip build/out/nfgcoin-*.exe ../nfgcoin-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
@@ -295,10 +295,10 @@ then
 	    echo ""
 	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -j ${proc} -m ${mem} --commit hanacoin=${COMMIT} --url hanacoin=${url} ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
-	    mv build/out/hanacoin-*-osx-unsigned.tar.gz inputs/hanacoin-osx-unsigned.tar.gz
-	    mv build/out/hanacoin-*.tar.gz build/out/hanacoin-*.dmg ../hanacoin-binaries/${VERSION}
+	    ./bin/gbuild -j ${proc} -m ${mem} --commit nfgcoin=${COMMIT} --url nfgcoin=${url} ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
+	    mv build/out/nfgcoin-*-osx-unsigned.tar.gz inputs/nfgcoin-osx-unsigned.tar.gz
+	    mv build/out/nfgcoin-*.tar.gz build/out/nfgcoin-*.dmg ../nfgcoin-binaries/${VERSION}
 	fi
 	popd
 
@@ -325,27 +325,27 @@ then
 	echo ""
 	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../hanacoin/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-linux ../nfgcoin/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
 	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../hanacoin/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-win-unsigned ../nfgcoin/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../hanacoin/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-unsigned ../nfgcoin/contrib/gitian-descriptors/gitian-osx.yml
 	# Signed Windows
 	echo ""
 	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
 	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs.ltc/ -r ${VERSION}-osx-signed ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -360,10 +360,10 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Windows"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../hanacoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/hanacoin-*win64-setup.exe ../hanacoin-binaries/${VERSION}
-	    mv build/out/hanacoin-*win32-setup.exe ../hanacoin-binaries/${VERSION}
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../nfgcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/nfgcoin-*win64-setup.exe ../nfgcoin-binaries/${VERSION}
+	    mv build/out/nfgcoin-*win32-setup.exe ../nfgcoin-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
@@ -371,9 +371,9 @@ then
 	    echo ""
 	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
-	    ./bin/gbuild -i --commit signature=${COMMIT} ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../hanacoin/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/hanacoin-osx-signed.dmg ../hanacoin-binaries/${VERSION}/hanacoin-${VERSION}-osx.dmg
+	    ./bin/gbuild -i --commit signature=${COMMIT} ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs.ltc/ ../nfgcoin/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/nfgcoin-osx-signed.dmg ../nfgcoin-binaries/${VERSION}/nfgcoin-${VERSION}-osx.dmg
 	fi
 	popd
 

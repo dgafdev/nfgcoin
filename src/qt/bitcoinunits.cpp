@@ -40,9 +40,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("HANA");
-    case mBTC: return QString("mHANA");
-    case uBTC: return QString::fromUtf8("μHANA");
+    case BTC: return QString("NFG");
+    case mBTC: return QString("mNFG");
+    case uBTC: return QString::fromUtf8("μNFG");
     default: return QString("???");
     }
 }
@@ -51,9 +51,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("Hanacoins");
-    case mBTC: return QString("Milli-Hanacoins (1 / 1" THIN_SP_UTF8 "000)");
-    case uBTC: return QString("Micro-Hanacoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case BTC: return QString("NFGcoins");
+    case mBTC: return QString("Milli-NFGcoins (1 / 1" THIN_SP_UTF8 "000)");
+    case uBTC: return QString("Micro-NFGcoins (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }

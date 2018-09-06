@@ -126,8 +126,8 @@
         <translation>Abrir &amp;URL...</translation>
     </message>
     <message>
-        <source>Send coins to a Hanacoin address</source>
-        <translation>Enviando monedas a una dirección de Hanacoin</translation>
+        <source>Send coins to a NFGcoin address</source>
+        <translation>Enviando monedas a una dirección de NFGcoin</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
@@ -146,8 +146,8 @@
         <translation>&amp;Verificar Mensaje...</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -296,8 +296,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin Core</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin Core</translation>
     </message>
     <message>
         <source>Insufficient funds</source>

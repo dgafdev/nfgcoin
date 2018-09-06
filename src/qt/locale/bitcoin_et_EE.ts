@@ -130,8 +130,8 @@
         <translation>Kõvakettal olevate plokkide reindekseerimine...</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -760,8 +760,8 @@
         <translation>Valikud:</translation>
     </message>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin Core</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

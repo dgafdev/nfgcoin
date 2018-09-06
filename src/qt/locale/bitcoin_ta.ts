@@ -90,8 +90,8 @@
         <translation>&amp;செய்தியை சரிசெய்...</translation>
     </message>
     <message>
-        <source>Hanacoin</source>
-        <translation>Hanacoin</translation>
+        <source>NFGcoin</source>
+        <translation>NFGcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -708,8 +708,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Hanacoin Core</source>
-        <translation>Hanacoin மையம்</translation>
+        <source>NFGcoin Core</source>
+        <translation>NFGcoin மையம்</translation>
     </message>
     <message>
         <source>(default: %u)</source>
