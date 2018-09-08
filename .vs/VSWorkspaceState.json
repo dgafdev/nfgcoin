@@ -1,8 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\consensus",
+    "\\src\\primitives",
+    "\\src\\qt",
+    "\\src\\rpc",
+    "\\src\\test",
+    "\\src\\wallet",
+    "\\src\\wallet\\test"
   ],
-  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }
