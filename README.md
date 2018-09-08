@@ -1,8 +1,6 @@
 NFGcoin Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/dgafdev/nfgcoin.svg?branch=master)](https://travis-ci.org/dgafdev/nfgcoin)
-
 https://nfgcoin.com
 
 What is NFGcoin?
