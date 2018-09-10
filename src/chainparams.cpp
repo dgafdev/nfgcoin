@@ -151,8 +151,8 @@ public:
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        //assert(consensus.hashGenesisBlock == uint256S("0xc699ca19d51c98fd39a188570afc6e73237682a57407ea6c7f2d22bdb6ae35e6"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x6cecc2669293484fcb9ac76d1e937b7aee80e49046b67e43bc1d8e403b0498da"));
+        assert(consensus.hashGenesisBlock == uint256S("..."));
+        assert(genesis.hashMerkleRoot == uint256S("..."));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         // vSeeds.emplace_back("dnsseed.nfgcoin.com", false);
@@ -262,8 +262,8 @@ if (true && genesis.GetHash() != hashGenesisBlock)
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        //assert(consensus.hashGenesisBlock == uint256S("0x4df73b297d37d41e66f50780a1ce671c6cafb319fb6676aa5b2af0ea09fd1d0b"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x6cecc2669293484fcb9ac76d1e937b7aee80e49046b67e43bc1d8e403b0498da"));
+        assert(consensus.hashGenesisBlock == uint256S("..."));
+        assert(genesis.hashMerkleRoot == uint256S("..."));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -367,8 +367,8 @@ if (true && genesis.GetHash() != hashGenesisBlock)
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        //assert(consensus.hashGenesisBlock == uint256S("0x719548bfb318084da500e0e4b6fea5d00a79300f2e33ed54a10bc4f477e91710"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x6cecc2669293484fcb9ac76d1e937b7aee80e49046b67e43bc1d8e403b0498da"));
+        assert(consensus.hashGenesisBlock == uint256S("..."));
+        assert(genesis.hashMerkleRoot == uint256S("..."));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
