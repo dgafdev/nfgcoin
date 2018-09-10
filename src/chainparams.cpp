@@ -43,7 +43,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
    CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1536590975, nBits=1d00ffff, nNonce=2083236893, vtx=1)
      CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
        CTxIn(COutPoint(000000, -1), coinbase 041ed50505871f09bc46809aa43d8d23c5a8cf5fd5f3ecb504a610b7818f11f3cbbd9db3e259b888802244ab4e2361bb4c33464ade9f1d0b6a0a1cd08c998f049c)
-      CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
+      CTxOut(nValue=5000.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
      vMerkleTree: 4a5e1e
  
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
