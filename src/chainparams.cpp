@@ -243,7 +243,7 @@ public:
         genesis = CreateGenesisBlock(1524130420, 62288, 0x1e0ffff0, 1, 5000 * COIN);
 
 
-
+/*
 		hashGenesisBlock = uint256("0x01");
 if (true && genesis.GetHash() != hashGenesisBlock)
         {
@@ -256,7 +256,7 @@ if (true && genesis.GetHash() != hashGenesisBlock)
             Logprintf("new testnet genesis nonce: %s\n", genesis.nNonce.ToString().c_str());
             Logprintf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
         }
-
+*/
 
 
 
@@ -348,7 +348,7 @@ public:
         genesis = CreateGenesisBlock(1296688602, 3, 0x207fffff, 1, 5000 * COIN);
 
 
-
+/*
 		hashGenesisBlock = uint256("0x01");
 if (true && genesis.GetHash() != hashGenesisBlock)
         {
@@ -362,7 +362,7 @@ if (true && genesis.GetHash() != hashGenesisBlock)
             Logprintf("new regtest genesis hash: %s\n", genesis.GetHash().ToString().c_str());
         }
 
-
+*/
 
 
         consensus.hashGenesisBlock = genesis.GetHash();
