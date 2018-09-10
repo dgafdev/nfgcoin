@@ -40,12 +40,12 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  * transaction cannot be spent since it did not originally exist in the
  * database.
  **/
-   CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1536590975, nBits=1d00ffff, nNonce=2083236893, vtx=1)
+/*   CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1536590975, nBits=1d00ffff, nNonce=2083236893, vtx=1)
      CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
        CTxIn(COutPoint(000000, -1), coinbase 041ed50505871f09bc46809aa43d8d23c5a8cf5fd5f3ecb504a610b7818f11f3cbbd9db3e259b888802244ab4e2361bb4c33464ade9f1d0b6a0a1cd08c998f049c)
       CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
      vMerkleTree: 4a5e1e
- 
+ */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const CScript genesisOutputScript = CScript() << ParseHex("041ed50505871f09bc46809aa43d8d23c5a8cf5fd5f3ecb504a610b7818f11f3cbbd9db3e259b888802244ab4e2361bb4c33464ade9f1d0b6a0a1cd08c998f049c") << OP_CHECKSIG;
@@ -129,7 +129,7 @@ public:
         nPruneAfterHeight = 100000;
         vAlertPubKey = ParseHex("04c193104567734547d76c6fef6b2b48385d610e00a47efb21a7e52923afa5b5def904d50b797e53c4a4836f4c504856cf1639f130c0f5c2f758db9ba73d6a269e");
 
-        genesis = CreateGenesisBlock(1536590975, 263152, 0x1e0ffff0, 1, 5000 * COIN);
+        genesis = CreateGenesisBlock(1536590975, 0, 0x1e0ffff0, 1, 5000 * COIN);
 
 
 		
@@ -240,7 +240,7 @@ public:
         nPruneAfterHeight = 1000;
         vAlertPubKey = ParseHex("047a94d1a9a5186d831852a1055c6283fc15411af97ad22b4f7b75bbf2c1051b79c33b3fc1dedaec8239974eabb353b3911671934a93af231646bbb88bb6452dce");
 
-        genesis = CreateGenesisBlock(1524130420, 62288, 0x1e0ffff0, 1, 5000 * COIN);
+        genesis = CreateGenesisBlock(1536590975, 0, 0x1e0ffff0, 1, 5000 * COIN);
 
 
 /*
@@ -345,7 +345,7 @@ public:
         nDefaultPort = 9543;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1296688602, 3, 0x207fffff, 1, 5000 * COIN);
+        genesis = CreateGenesisBlock(1536590975, 0, 0x207fffff, 1, 5000 * COIN);
 
 
 /*
