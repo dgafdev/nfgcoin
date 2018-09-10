@@ -40,16 +40,16 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  * transaction cannot be spent since it did not originally exist in the
  * database.
  **/
- //  CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1536590975, nBits=1d00ffff, nNonce=2083236893, vtx=1)
- //    CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
- //      CTxIn(COutPoint(000000, -1), coinbase 04ffff001d0104455468652054696d65732030332f4a616e2f32303039204368616e63656c6c6f72206f6e206272696e6b206f66207365636f6e64206261696c6f757420666f722062616e6b73)
- //     CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
- //    vMerkleTree: 4a5e1e
+   CBlock(hash=000000000019d6, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=4a5e1e, nTime=1536590975, nBits=1d00ffff, nNonce=2083236893, vtx=1)
+     CTransaction(hash=4a5e1e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
+       CTxIn(COutPoint(000000, -1), coinbase 041ed50505871f09bc46809aa43d8d23c5a8cf5fd5f3ecb504a610b7818f11f3cbbd9db3e259b888802244ab4e2361bb4c33464ade9f1d0b6a0a1cd08c998f049c)
+      CTxOut(nValue=50.00000000, scriptPubKey=0x5F1DF16B2B704C8A578D0B)
+     vMerkleTree: 4a5e1e
  
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const CScript genesisOutputScript = CScript() << ParseHex("041ed50505871f09bc46809aa43d8d23c5a8cf5fd5f3ecb504a610b7818f11f3cbbd9db3e259b888802244ab4e2361bb4c33464ade9f1d0b6a0a1cd08c998f049c") << OP_CHECKSIG;
-    const char* pszTimestamp = "Korea Times 11/Jan/2018 Bitcoin collapses as South Korea threatens to ban trading";
+    const char* pszTimestamp = "The Onion 10/Sep/2018 Whoa, Classmate Got Totally Hideous Over Summer Vacation";
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -133,7 +133,7 @@ public:
 
 
 		
-		hashGenesisBlock = uint256("0x01");
+	/*	hashGenesisBlock = uint256("0x01");
 		
 		if (true && genesis.GetHash() != hashGenesisBlock)
 			{
@@ -147,7 +147,7 @@ public:
 				Logprintf("new mainnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
 			}
 
-
+	*/
 
         consensus.hashGenesisBlock = genesis.GetHash();
 
